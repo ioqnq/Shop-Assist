@@ -1,7 +1,20 @@
 document.getElementById("extract").addEventListener("click", () => {
-  const tags = document.getElementById("tags").value.split(",").map(t => t.trim());
+  const tag = "h1";
 
-  chrome.runtime.sendMessage({ action: "extractByTag", tags }, (response) => {
-    document.getElementById("output").textContent = JSON.stringify(response.texts, null, 2);
+  chrome.runtime.sendMessage({ action: "extractByTag", tag }, (response) => {
+    document.getElementById("output").textContent = response.text;
   });
 });
+
+// document.getElementById("extract").addEventListener("click", () => {
+//   const tag = "h1";
+//   chrome.runtime.sendMessage({ action: "extractByTag", tag }, (response) => {
+//     const output = document.getElementById("output");
+//     if (response && response.text && response.text.length > 0) {
+//       output.textContent = response.text.join("\n");
+//     } else {
+//       output.textContent = "No elements found";
+//     }
+//   });
+// });
+

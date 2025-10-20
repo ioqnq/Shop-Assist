@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(
         tabs[0].id,
-        { action: "extractByTag", tags: msg.tags },
+        { action: "extractByTag", tag: msg.tag },
         (response) => {
           sendResponse(response);
         }
