@@ -1,8 +1,8 @@
 document.getElementById("extract").addEventListener("click", () => {
-  const tag = "h1";
+  const tag = '.current-price-elem';
 
   chrome.runtime.sendMessage({ action: "extractByTag", tag }, (response) => {
-    document.getElementById("output").textContent = response.text;
+    document.getElementById("output").textContent = response.text[0];
   });
 });
 
